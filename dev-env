@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 dry_run="0"
 
-if [ -z "XDG_CONFIG_HOME" ]; then
-	echo "no xdg config home"
+if [ -z "$XDG_CONFIG_HOME" ]; then
+	echo "no xdg config hom"
 	echo "using ~/.config"
 	XDG_CONFIG_HOME=$HOME/.config
 fi
@@ -43,6 +43,7 @@ update_files() {
 			if [[ $dry_run == "0" ]]; then
 				cp -r ./$c $2
 			fi
+
 		done
 	)
 	popd &> /dev/null
