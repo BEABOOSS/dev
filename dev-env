@@ -4,6 +4,7 @@ dry_run="0"
 if [ -z "XDG_CONFIG_HOME" ]; then
 	echo "no xdg config home"
 	echo "using ~/.config"
+	XDG_CONFIG_HOME=$HOME/.config
 fi
 
 if [ -z "$DEV_ENV" ]; then
@@ -71,4 +72,4 @@ copy $DEV_ENV/env/.zshrc $HOME/.zshrc
 #copy $DEV_ENV/env/.tmux-sessionizer $HOME/.tmux-sessionizer
 copy $DEV_ENV/dev-env $HOME/.local/scripts/dev-env
 
-hyperctl reload
+hyprctl reload
