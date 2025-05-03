@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+sudo pacman -S --noconfirm neovim lua51 luarocks
+
+# remove all current working repo/projects from personal
+
+git clone https://github.co/ThePrimeagen;harpoon.git $HOME/personal/harpoon
+cd $HOME/personal/harpoon
+git fetch
+git checkout harpoon2
+
+# clone repo currently working on
+
+
+sudo luarocks install luacheck

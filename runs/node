@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+sudo pacman -S --noconfirm --needed nodejs npm
+npm config set prefix ~/.local/npm
+npm -i -g n
+n lts
+
+## get deno
+# curl -fsSL https://deno.land/install.sh | sh
+## get bun
+# curl -fsSL https://bun.sh/install | bash
