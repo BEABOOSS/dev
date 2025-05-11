@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+
+if [ ! -f /usr/share/X11/xkb/symbols/fw-alt-layout ]; then
+	echo "fw-alt-layout doesn't exist, copying over"
+fi
+
+if grep -q "fw-alt-layout" /usr/share/X11/xkb/rules/evdev.xml; then
+	echo "evdev.xml already has fw-alt-layout layout definition"
+	exit 0
+fi
+
+if [ ! -f /usr/share/X11/xkb/symbols/alt-qwerty-prog]; then
+:q
+	echo "alt-qwerty-prog doesn't exist, copying over"
+fi
+
+if grep -q "alt-qwerty-prog" /usr/share/X11/xkb/rules/evdev.xml; then
+	echo "evdev.xml already has alt-qwerty-prog layout definition"
+	exit 0
+fi
+
+
+colemack_env="
+<layout>
+	<confiItem>
+		<name>fw-alt-layout</name>
+		<shortDescription>epd</shortDescription>
+		<description>BEAB English(US)</description>
+	</configItem>
+	<variantList>
+		<variant>
+			<configItem>
+				<name>fw-alt-layout</name>
+				<description>English(Framework Alt Layout)</description>
+				<vendor>WarrenLeStum</vendor>
+			</configItem>
+		</variant>
+	</variantList>
+</layout>
+"
+
+qwerty_env="
+<layout>
+	<confiItem>
+		<name>alt-qwerty-prog</name>
+		<shortDescription>epd</shortDescription>
+		<description>BEAB English(US)</description>
+	</configItem>
+	<variantList>
+		<variant>
+			<configItem>
+				<name>alt-qwerty-prog</name>
+				<description>English(Framework Alt Layout)</description>
+				<vendor>WarrenLeStum</vendor>
+			</configItem>
+		</variant>
+	</variantList>
+</layout>
+"
+
+layout_list=$(cat /usr/share/X11/xkb/rules/evdev.xml | grep "<layoutList>" -n | cut -f1 -d:)
+total_lines=$(cat /usr/share/X11/xkb/rules/evdev.xml | wc -l)
+tail_lines=$(($total_lines - $layout_list))
+
+up_to=$(cat /usr/share/X11/xkb/rules/evdev.xml | head -$layout_list)
+remaining=$(cat /usr/share/X11/xkb/rules/evdev.xml | tail -$tail_list)
+
+echo "$up_to
+$qwerty_env
+$remaining
+" > /usr/share/X11/xkb/rules/evdev.xml
+
+echo "don't forget to log out to let these changes take effect"

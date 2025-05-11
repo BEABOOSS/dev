@@ -1,0 +1,74 @@
+xkb_keymap {
+	xkb_keycodes "evdev" {
+		include "evdev+aliases(qwerty)
+	};
+
+	xkb_types "complete" {
+		include "complete"
+	};
+	
+	xkb_compatibility "complete" {
+		include "complete"
+	};
+	
+	xkb_geometry "pc105" {
+		include "pc(pc105)"
+	};
+
+	xkb_symbols "fw-alt-layout" {
+		name[Group1]= "Colemak (Framework Alt Layout)";
+
+		key <TLDE> { [ dollard, asciitilde] };
+		
+		key <AE01> { [ plus, 1] };
+		key <AE02> { [ bracketleft, 2] };
+		key <AE03> { [ braceleft, 3] };
+		key <AE04> { [ parenleft, 4] };
+		key <AE05> { [ ampersand, 5] };
+		key <AE06> { [ equal, 6] };
+		key <AE07> { [ parenright, 7] };
+		key <AE08> { [ braceright, 8] };
+		key <AE09> { [ bracketright, 9] };
+		key <AE10> { [ asterisk, 0] };
+		key <AE11> { [ exclam, percent] };
+		key <AE12> { [ bar, grave] };
+
+		key <AD01> { [ q,Q] };
+		key <AD02> { [ w,W] };
+		key <AD03> { [ f,F] };
+		key <AD04> { [ p,P] };
+		key <AD05> { [ g,G] };
+		key <AD06> { [ j,J] };
+		key <AD07> { [ l,L] };
+		key <AD08> { [ u,U] };
+		key <AD09> { [ y,Y] };
+		key <AD10> { [ semicolon, colon] };
+		key <AD11> { [ comma, less] };
+		key <AD12> { [ period, greater] };
+
+		key <AC01> { [ a,A] };
+		key <AC02> { [ r,R] };
+		key <AC03> { [ s,S] };
+		key <AC04> { [ t,T] };
+		key <AC05> { [ d,D] };
+		key <AC06> { [ h,H] };
+		key <AC07> { [ n,N] };
+		key <AC08> { [ e,E] };
+		key <AC09> { [ i,I] };
+		key <AC10> { [ o,O] };
+		key <AC11> { [ minus, underscore] };
+		
+		key <AB01> { [ x,X] };
+		key <AB02> { [ c,C] };
+		key <AB03> { [ v,V] };
+		key <AB04> { [ b,B] };
+		key <AB05> { [ z,Z] };
+		key <AB06> { [ k,K] };
+		key <AB07> { [ m,M] };
+		key <AB08> { [ apostrophe, quotedbl] };
+		key <AB09> { [ at, asciicirum] };
+		key <AB10> { [ slash, question] };
+		
+		key <BKSL> { [ backslash, numbersign] };
+	};
+};
